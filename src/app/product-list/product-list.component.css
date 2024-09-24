@@ -1,0 +1,167 @@
+/* Conteneur principal */
+.container {
+  max-width: 1200px;
+  margin: 20px auto;
+  padding: 20px;
+  background-color: #f8f9fa;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Titres */
+h2,
+h3 {
+  color: #343a40;
+  text-align: center;
+  margin-bottom: 20px;
+  font-family: "Arial", sans-serif;
+}
+
+/* Formulaire */
+form {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: space-between;
+  margin-bottom: 30px;
+}
+
+form .mb-3 {
+  flex: 1;
+  min-width: 200px;
+}
+
+form input[type="text"],
+form input[type="number"] {
+  width: 100%;
+  padding: 10px;
+  border: 2px solid #ced4da;
+  border-radius: 5px;
+  font-size: 16px;
+  transition: border-color 0.3s ease;
+}
+
+form input[type="text"]:focus,
+form input[type="number"]:focus {
+  border-color: #495057;
+  outline: none;
+}
+
+/* Bouton du formulaire */
+button {
+  background-color: #007bff;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: #0056b3;
+}
+
+/* Désactiver le bouton quand le formulaire est invalide */
+button[disabled] {
+  background-color: #6c757d;
+  cursor: not-allowed;
+}
+
+/* Table */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+thead {
+  background-color: #007bff;
+  color: white;
+}
+
+thead th {
+  padding: 12px;
+  text-align: left;
+  font-weight: bold;
+  font-family: "Arial", sans-serif;
+}
+
+tbody tr:nth-child(even) {
+  background-color: #f8f9fa;
+}
+
+tbody tr {
+  transition: background-color 0.3s ease;
+}
+
+tbody tr:hover {
+  background-color: #e9ecef;
+}
+
+tbody td {
+  padding: 12px;
+  border-bottom: 1px solid #dee2e6;
+  font-family: "Arial", sans-serif;
+}
+
+/* Classe pour les produits en stock et en rupture de stock */
+.in-stock {
+  color: green;
+  font-weight: bold;
+}
+
+.out-of-stock {
+  color: red;
+  font-weight: bold;
+}
+
+/* Champ de recherche */
+input[type="text"] {
+  margin-bottom: 20px;
+  padding: 10px;
+  border: 2px solid #007bff;
+  border-radius: 5px;
+  width: 100%;
+  max-width: 300px;
+  transition: border-color 0.3s ease;
+}
+
+input[type="text"]:focus {
+  border-color: #0056b3;
+}
+
+/* Table responsive */
+@media (max-width: 768px) {
+  table,
+  thead,
+  tbody,
+  th,
+  td,
+  tr {
+    display: block;
+    width: 100%;
+  }
+
+  thead {
+    display: none;
+  }
+
+  tr {
+    margin-bottom: 15px;
+  }
+
+  td {
+    padding-left: 50%;
+    position: relative;
+  }
+
+  td::before {
+    content: attr(data-label);
+    position: absolute;
+    left: 10px;
+    top: 12px;
+    font-weight: bold;
+    color: #6c757d;
+  }
+}

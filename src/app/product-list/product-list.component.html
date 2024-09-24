@@ -1,0 +1,103 @@
+<div class="container">
+  <h2>Product Inventory</h2>
+
+  <!-- Champ de recherche -->
+  <input
+    type="text"
+    [(ngModel)]="searchTerm"
+    placeholder="Search for products"
+    class="form-control mb-3"
+  />
+
+  <!-- Formulaire d'ajout de produit -->
+  <h3>Add New Product</h3>
+  <form (ngSubmit)="onSubmit()" #productForm="ngForm">
+    <div class="mb-3">
+      <label for="name">Name:</label>
+      <input
+        type="text"
+        id="name"
+        class="form-control"
+        [(ngModel)]="newProduct.name"
+        name="name"
+        required
+      />
+    </div>
+
+    <div class="mb-3">
+      <label for="price">Price:</label>
+      <input
+        type="number"
+        id="price"
+        class="form-control"
+        [(ngModel)]="newProduct.price"
+        name="price"
+        required
+      />
+    </div>
+
+    <div class="mb-3">
+      <label for="category">Category:</label>
+      <input
+        type="text"
+        id="category"
+        class="form-control"
+        [(ngModel)]="newProduct.category"
+        name="category"
+        required
+      />
+    </div>
+
+    <div class="mb-3">
+      <label for="stock">Stock:</label>
+      <input
+        type="number"
+        id="stock"
+        class="form-control"
+        [(ngModel)]="newProduct.stock"
+        name="stock"
+        required
+      />
+    </div>
+
+    <button
+      type="submit"
+      class="btn btn-primary"
+      [disabled]="!productForm.form.valid"
+    >
+      Add Product
+    </button>
+  </form>
+
+  <!-- Affichage des produits -->
+  <h3>Product List</h3>
+  <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Price</th>
+        <th>Category</th>
+        <th>Stock Status</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr
+        *ngFor="let product of products | filter : searchTerm"
+        [ngClass]="{
+          'out-of-stock': product.stock === 0,
+          'in-stock': product.stock > 0
+        }"
+      >
+        <td>{{ product.id }}</td>
+        <td>{{ product.name }}</td>
+        <td>{{ product.price | currency : "EUR" : "symbol" }}</td>
+        <td>{{ product.category }}</td>
+        <td>
+          <span *ngIf="product.stock > 0">{{ product.stock }} in stock</span>
+          <span *ngIf="product.stock === 0">Out of stock</span>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
